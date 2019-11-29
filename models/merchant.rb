@@ -22,7 +22,7 @@ class Merchant
     return merchants.map{ |merchant| Merchant.new(merchant)}
   end
 
-  def delete_all()
+  def self.delete_all()
     sql = 'DELETE FROM merchants;'
     SqlRunner.run(sql)
   end
