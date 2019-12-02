@@ -6,7 +6,7 @@ class Tag
 
   def initialize(info)
     @id = info['id'].to_i() if info['id']
-    @name = info['info']
+    @name = info['name']
   end
 
   def save()

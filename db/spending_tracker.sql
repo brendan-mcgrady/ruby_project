@@ -12,10 +12,10 @@ CREATE TABLE merchants(
   name VARCHAR(50)
 );
 
-CREATE TABLE transactions(
-  id SERIAL PRIMARY KEY,
-  merchant_id INT REFERENCES merchants(id),
-  tag_id INT REFERENCES tags(id),
-  trans_timestamp TIMESTAMP,
-  amount DECIMAL(5, 2)
-);
+-- CREATE TABLE transactions(
+--   id SERIAL PRIMARY KEY,
+--   merchant_id INT REFERENCES merchants(id),
+--   tag_id INT REFERENCES tags(id),
+--   trans_time VARCHAR,
+--   amount DECIMAL(5, 2)
+-- );
