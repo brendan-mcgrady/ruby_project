@@ -1,4 +1,4 @@
-require_relative('db/sqlrunner')
+require_relative('../db/sqlrunner')
 
 class Tag
 
@@ -25,6 +25,13 @@ class Tag
   def self.delete_all()
     sql = 'DELETE FROM tags;'
     SqlRunner.run(sql)
+  end
+
+  def self.find_tag_by_id(id)
+    sql = 'SELECT * FROM tags WHERE id = $1;'
+    values = [id]
+    found_tag = SqlRunner.run(sql, values)
+    return Student.new(found_tag[0])
   end
 
 end
