@@ -30,7 +30,7 @@
 
   <label>
     <label for="tag-name">Amount: £</label>
-    <input type="text" id = "tag-name" name="amount">
+    <input type="number" id = "tag-name" name="amount">
   </label>
 
   <input type="submit" value="Post transaction">
@@ -40,9 +40,30 @@
 <h4>Total spent: £<%= Transaction.total() %></h4>
 
 
+
+<table>
+  <tbody>
+  <tr>
+    <th>Name</th>
+    <th>Tag</th>
+    <th>Time</th>
+    <th>Amount</th>
+  </tr>
 <% for transaction in @transactions %>
-<p>Merchant: <%= transaction.merchant().name %></p>
+  <tr>
+    <td><%= transaction.merchant().name %></td>
+    <td><%= transaction.tag().name %></td>
+    <td><%= transaction.trans_time() %></td>
+    <td>£<%= transaction.amount() %></td>
+  </tr>
+
+
+</tbody>
+<% end %>
+</table>
+
+
+<!-- <p>Merchant: </p>
 <p>Tag: <%= transaction.tag().name %></p>
 <p>Time: <%= transaction.trans_time() %></p>
-<p>Amount: £<%= transaction.amount() %></p>
-<% end %>
+<p>Amount: £<%= transaction.amount() %></p> -->
