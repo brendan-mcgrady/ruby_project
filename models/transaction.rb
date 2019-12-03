@@ -25,6 +25,13 @@ class Transaction
     return transactions.map{ |transaction| Transaction.new(transaction) }
   end
 
+  def self.find()
+    sql = 'SELECT * FROM transactions WHERE id = $1;'
+    values = [id]
+    found_transaction = SqlRunner.run(sql, values)
+    return Transaction.new(found_transaction.first())
+  end
+
   def tag()
     sql = 'SELECT * FROM tags WHERE id = $1'
     values = [@tag_id]

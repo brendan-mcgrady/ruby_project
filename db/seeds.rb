@@ -3,9 +3,9 @@ require_relative('../models/merchant')
 require_relative('../models/tag')
 require_relative('../models/transaction')
 
+Transaction.delete_all()
 Merchant.delete_all()
 Tag.delete_all()
-Transaction.delete_all()
 
 merchant1 = Merchant.new({ 'name' => 'Tesco'})
 merchant1.save()
@@ -30,8 +30,16 @@ transaction1 = Transaction.new({
   'tag_id' => tag1.id,
   'trans_time' => '4pm',
   'amount' => 23.669
-   })
+  })
 transaction1.save()
+
+transaction2 = Transaction.new({
+  'merchant_id' => merchant2.id,
+  'tag_id' => tag2.id,
+  'trans_time' => '9pm',
+  'amount' => 12.30
+  })
+transaction2.save()
 
 binding.pry
 nil
