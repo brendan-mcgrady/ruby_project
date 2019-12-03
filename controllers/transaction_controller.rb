@@ -21,7 +21,7 @@ post ('/') do
   @tags = Tag.all()
   transaction = Transaction.new(params)
   transaction.save()
-  erb(:"home")
+  redirect to '/'
 end
 # get '/transactions/:id' do
 #   @transaction = find(id)

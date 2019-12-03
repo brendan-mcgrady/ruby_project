@@ -6,19 +6,21 @@
   <label>
   Merchant:
     <select name="merchant_id">
-      <% for merchant in @merchants %>
-      <option value="<%= merchant.id %>"><%= merchant.name %></option>
-      <% end %>
+      <option selected disabled value="">Select merchant</option>
+        <% for merchant in @merchants %>
+          <option value="<%= merchant.id %>"><%= merchant.name %></option>
+        <% end %>
     </select>
   </label>
 
   <label>
     Tag:
-    <select name="tag_id">
-      <% for tag in @tags %>
-      <option value="<%= tag.id %>"><%= tag.name %></option>
-      <% end %>
-    </select>
+      <select name="tag_id">
+        <option selected disabled value="">Select tag</option>
+          <% for tag in @tags %>
+            <option value="<%= tag.id %>"><%= tag.name %></option>
+          <% end %>
+      </select>
   </label>
 
   <label>
@@ -27,7 +29,7 @@
   </label>
 
   <label>
-    <label for="tag-name">Amount:</label>
+    <label for="tag-name">Amount: £</label>
     <input type="text" id = "tag-name" name="amount">
   </label>
 
@@ -42,5 +44,5 @@
 <p>Merchant: <%= transaction.merchant().name %></p>
 <p>Tag: <%= transaction.tag().name %></p>
 <p>Time: <%= transaction.trans_time() %></p>
-<p>Amount: <%= transaction.amount() %></p>
+<p>Amount: £<%= transaction.amount() %></p>
 <% end %>
