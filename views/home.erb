@@ -34,9 +34,9 @@
   <input type="submit" value="Post transaction">
 </form>
 
-<% for transaction in @transactions %>
-<h4>Total spent: <%= transaction.total().first %></h4>
-<% end %>
+
+<h4>Total spent: £<%= Transaction.total() %></h4>
+
 
 <% for transaction in @transactions %>
 <p>Merchant: <%= transaction.merchant().name %></p>
