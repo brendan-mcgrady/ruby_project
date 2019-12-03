@@ -17,6 +17,7 @@ end
 
 post ("/merchants") do
   @merchant = Merchant.new(params)
+  @merchant.name.capitalize!
   @merchant.save()
   redirect to '/merchants'
 end

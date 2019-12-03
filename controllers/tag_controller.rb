@@ -17,6 +17,7 @@ end
 
 post ("/tags") do
   @tag = Tag.new(params)
+  @tag.name.capitalize!
   @tag.save()
   redirect to '/tags'
 end
