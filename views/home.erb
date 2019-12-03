@@ -1,2 +1,11 @@
 <h1>Home</h1>
 <h2>Your transaction history</h2>
+
+<h2>All transactions</h2>
+
+<% for transaction in @transactions %>
+<p>Merchant: <%= transaction.merchant().name %></p>
+<p>Tag: <%= transaction.tag().name %></p>
+<p>Time: <%= transaction.trans_time() %></p>
+<p>Amount: <%= transaction.amount() %></p>
+<% end %>
