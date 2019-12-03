@@ -35,6 +35,10 @@
 </form>
 
 <% for transaction in @transactions %>
+<h4>Total spent: <%= transaction.total().first %></h4>
+<% end %>
+
+<% for transaction in @transactions %>
 <p>Merchant: <%= transaction.merchant().name %></p>
 <p>Tag: <%= transaction.tag().name %></p>
 <p>Time: <%= transaction.trans_time() %></p>
