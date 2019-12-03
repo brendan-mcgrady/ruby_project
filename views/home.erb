@@ -1,7 +1,38 @@
 <h1>Home</h1>
-<h2>Your transaction history</h2>
 
-<h2>All transactions</h2>
+<h2>Transaction history</h2>
+
+<form action="/" method="post">
+  <label>
+  Merchant:
+    <select name="merchant_id">
+      <% for merchant in @merchants %>
+      <option value="<%= merchant.id %>"><%= merchant.name %></option>
+      <% end %>
+    </select>
+  </label>
+
+  <label>
+    Tag:
+    <select name="tag_id">
+      <% for tag in @tags %>
+      <option value="<%= tag.id %>"><%= tag.name %></option>
+      <% end %>
+    </select>
+  </label>
+
+  <label>
+    <label for="tag-name">Time:</label>
+    <input type="text" id = "tag-name" name="trans_time">
+  </label>
+
+  <label>
+    <label for="tag-name">Amount:</label>
+    <input type="text" id = "tag-name" name="amount">
+  </label>
+
+  <input type="submit" value="Post transaction">
+</form>
 
 <% for transaction in @transactions %>
 <p>Merchant: <%= transaction.merchant().name %></p>
