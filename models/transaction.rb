@@ -1,6 +1,7 @@
 class Transaction
 
-  attr_reader :id, :merchant_id, :tag_id, :trans_time, :amount
+  attr_reader :id
+  attr_accessor :merchant_id, :tag_id, :trans_time, :amount
 
   def initialize(info)
     @id = info['id'].to_i() if info['id']
@@ -18,18 +19,29 @@ class Transaction
     @id = result[0]['id'].to_i()
   end
 
+  def self.all()
+    sql = 'SELECT * FROM transactions;'
+    transactions = SqlRunner.run(sql)
+    return transactions.map{ |transaction| Transaction.new(transaction) }
+  end
+
   def tag()
-    sql = "SELECT * FROM tags WHERE id = $1"
+    sql = 'SELECT * FROM tags WHERE id = $1'
     values = [@tag_id]
     results = SqlRunner.run(sql, values)
     return Tag.new(results.first)
   end
 
   def merchant()
-    sql = "SELECT * FROM merchant WHERE id = $1"
+    sql = 'SELECT * FROM merchants WHERE id = $1'
     values = [@merchant_id]
     result = SqlRunner.run(sql, values)
     return Merchant.new(result.first)
+  end
+
+  def self.delete_all()
+    sql = 'DELETE FROM transactions;'
+    SqlRunner.run(sql)
   end
 
 end
