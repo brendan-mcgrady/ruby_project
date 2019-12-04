@@ -13,8 +13,8 @@ class Transaction
 
   def save()
     sql = 'INSERT INTO transactions (merchant_id, tag_id, trans_time, amount)
-           VALUES ($1, $2, $3, $4) RETURNING id;'
-    values = [@merchant_id, @tag_id, @trans_time, @amount]
+           VALUES ($1, $2, CURRENT_TIMESTAMP, $3) RETURNING id;'
+    values = [@merchant_id, @tag_id, @amount]
     result = SqlRunner.run(sql, values)
     @id = result[0]['id'].to_i()
   end
@@ -25,11 +25,11 @@ class Transaction
     return transactions.map{ |transaction| Transaction.new(transaction) }
   end
 
-  def self.find()
+  def self.find(id)
     sql = 'SELECT * FROM transactions WHERE id = $1;'
     values = [id]
     found_transaction = SqlRunner.run(sql, values)
-    return Transaction.new(found_transaction.first())
+    return Transaction.new(found_transaction.first)
   end
 
   def tag()
@@ -55,6 +55,10 @@ class Transaction
     sql = 'SELECT SUM(amount) FROM transactions;'
     result = SqlRunner.run(sql)
     return result.first()['sum']
+  end
+
+  def sort_trans_by_time()
+
   end
 
 end

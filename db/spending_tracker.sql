@@ -16,6 +16,6 @@ CREATE TABLE transactions(
   id SERIAL PRIMARY KEY,
   merchant_id INT REFERENCES merchants(id),
   tag_id INT REFERENCES tags(id),
-  trans_time VARCHAR,
+  trans_time TIMESTAMP,
   amount DECIMAL(5, 2)
 );

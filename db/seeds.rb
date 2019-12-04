@@ -28,7 +28,6 @@ tag4.save()
 transaction1 = Transaction.new({
   'merchant_id' => merchant1.id,
   'tag_id' => tag1.id,
-  'trans_time' => '4pm',
   'amount' => 23.669
   })
 transaction1.save()
@@ -36,7 +35,6 @@ transaction1.save()
 transaction2 = Transaction.new({
   'merchant_id' => merchant2.id,
   'tag_id' => tag2.id,
-  'trans_time' => '9pm',
   'amount' => 12.30
   })
 transaction2.save()
